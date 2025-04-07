@@ -14,7 +14,7 @@ def send_notification_emails(lead: models.Lead):
     send_email(lead.email, prospect_subject, prospect_body)
 
     # Email to the attorney (replace with a valid email in a real scenario)
-    attorney_email = "gowthamsolleti@gmail.com"
+    attorney_email = "attorney@gmail.com"
     attorney_subject = "New Lead Submitted"
     attorney_body = f"A new lead has been submitted by {lead.first_name} {lead.last_name}."
     send_email(attorney_email, attorney_subject, attorney_body)
