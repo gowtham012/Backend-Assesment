@@ -2,6 +2,8 @@ from fastapi import FastAPI, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app import models, schemas, crud, email_utils, auth
 from app.database import engine, SessionLocal
+from typing import List
+
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
@@ -32,7 +34,7 @@ def create_lead(
 
 
 
-@app.get("/leads", response_model=list[schemas.LeadOut])
+@app.get("/leads", response_model=List[schemas.LeadOut])
 def list_leads(
     db: Session = Depends(get_db),
     user: str = Depends(auth.get_current_user)
